@@ -178,6 +178,47 @@
     .scroll-top:hover {
       opacity: 1;
     }
+    .sidebar {
+      position: fixed; /* Keeps the sidebar visible at all times */
+      top: 0;
+      left: 0;
+      width: 250px;
+      height: 100vh; /* Full height of the viewport */
+      background-color: #2E3A59; /* Sidebar background color */
+      display: flex;
+      flex-direction: column;
+      padding: 0rem;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Optional shadow for better visibility */
+    }
+    .sidebar-header {
+      color: white; /* Make the Navigation text white */
+      font-size: 2rem;
+      margin: 0; /* Remove margins to align it at the top */
+      padding: 1rem; /* Add padding for spacing inside the sidebar */
+      text-align: center;
+      background-color: black; /* Match the sidebar background */
+    }
+    .sidebar ul {
+      list-style: none;
+      padding: 1;
+      margin: 1;
+    }
+
+    .sidebar ul li {
+      margin-bottom: 3rem;
+    }
+
+    .sidebar ul li a {
+      text-decoration: none;
+      color: white;
+      font-size: 1.5rem;
+    }
+
+    /* Main Content Styles */
+    .content {
+      margin-left: 250px; /* Offset the content to the right of the sidebar */
+      padding: 2rem;
+    }
   </style>
 </head>
 <body>
@@ -187,11 +228,25 @@
     The custom logic in your updated JS file will detect these “screens” 
     and link to them by ID. 
   -->
+  <body>
+    <!-- Sidebar -->
+    <nav class="sidebar">
+      <h2 class="sidebar-header">Navigation</h2>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#Resume">Resume</a></li>
+        <li><a href="#Project">Project</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  
+    <!-- Main Content -->
+    <div class="content">
   <portfolio-sidebar-theme title="Portfolio">
     <!-- Hero screen: HOME -->
     <portfolio-screen id="home" title="HOME" class="screen">
       <img src="https://upload.wikimedia.org/wikipedia/en/thumb/3/3a/Penn_State_Nittany_Lions_logo.svg/1200px-Penn_State_Nittany_Lions_logo.svg.png" alt="Logo" class="logo" />
-      <h1>Mani Amir's Professional</h1>
+      <h1>Shane Godfrey's Professional</h1>
       <h2>Portfolio</h2>
     </portfolio-screen>
 
@@ -199,35 +254,48 @@
     <portfolio-screen id="about" title="About" class="screen">
       <div class="about-content">
         <!-- Example user headshot -->
-        <img src="https://media.licdn.com/dms/image/v2/D4E03AQF5OaC6sW21sg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1720821545715?e=1750896000&v=beta&t=zagmWaCQ5eYE_ZXiI7kt5We-l_d53TyY8cWyggDWtlY" alt="User Headshot">
+        <img src="https://media.licdn.com/dms/image/v2/D4E03AQF9tWJ_Rh-kcA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1689736148829?e=1750896000&v=beta&t=_v723NKVfduwUf-TP1c51ElcvwRpPNwi8HFZwcY660I" alt="User Headshot">
         <div class="about-text">
           <h3>About Me</h3>
-          <p>I am a second year undergraduate from Penn State University studying information sciences and technology from northern Virginia. I am a hardworking student while balancing academics with hobbies and intrests. I like to lift weights, play soccer, and play table tennis. I play for the Penn State Club Table Tennis team I will be vice president next year. Looking forward to working with you!</p>
+          <p>Hi, I'm Shane, a second-year student at Penn State University. I'm currently studying Enterprise Integration Technology in the College of Information Sciences and Technology.</p>
         </div>
       </div>
     </portfolio-screen>
 
     <!-- CV screen -->
-    <portfolio-screen id="cv" title="CV" class="screen">
-      <h1>Curriculum Vitae</h1>
+    <portfolio-screen id="Resume" title="CV" class="screen">
+      <h1>Resume</h1>
       <p>Show your education, experience, skills, etc.</p>
     </portfolio-screen>
 
     <!-- Research screen -->
-    <portfolio-screen id="research" title="Research" class="screen">
-      <h1>Research</h1>
+    <portfolio-screen id="Projects" title="Research" class="screen">
+      <h1>Projects</h1>
       <p>Highlight your research topics, publications, interests.</p>
     </portfolio-screen>
+    <style>
+      /* Add more space between headers */
+      h1, h2, h3 {
+        margin-top: 15rem; /* Adjust this value to match the spacing between Portfolio and About Me */
+        margin-bottom: 1rem;
+        text-align: center; /* Adjust this value to match the spacing */
+      }
+      p {
+        margin-top: 0; /* Add space above the text */
+        margin-bottom: 2rem; /* Add space below the text */
+        text-align: center; /* Center the text */
+      }
+    </style>
 
     <!-- Contact screen -->
     <portfolio-screen id="contact" title="Contact" class="screen">
       <h1>Contact</h1>
       <p>
-        <strong>Email:</strong> <a href="mailto:you@example.com">ama8745@psu.edu</a>
+        <strong>Email:</strong> <a href="mailto:Scg5440@psu.edu">Scg5440@psu.edu</a>
       </p>
       <!-- Add this under the Contact section -->
 <section id="contact">
-  <h2>Contact</h2>
+  <h2>Get in contact with me</h2>
   <!-- Embed Google Form -->
   <iframe 
     src="https://docs.google.com/forms/d/e/1FAIpQLSemufOM3ARM3cQmnkR6EXVA__3kZBYRMLhjmktbCXJz6Bpxew/viewform?usp=header" 
