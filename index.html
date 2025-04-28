@@ -39,13 +39,30 @@
       Each one should fill the viewport.
     */
     .screen {
-      width: 100%;
-      height: 100vh;
-      position: relative;
-      box-sizing: border-box;
-      /* Use padding to create space for content */
-      padding: 20px 30px;
-    }
+      display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    text-align: center; /* Center text alignment */
+    height: 100vh; /* Make each section fill the viewport */
+    padding: 2rem;
+    box-sizing: border-box;
+  }
+  #about {
+    align-items: flex-start; /* Align content to the left */
+    text-align: left; /* Align text to the left */
+    padding-left: 2rem; /* Add some padding to the left */
+  }
+
+  h1, h2, h3 {
+    margin-top: 1rem; /* Add some space above headers */
+    margin-bottom: 1rem; /* Add some space below headers */
+  }
+
+  p {
+    margin-top: 0.5rem; /* Add some space above paragraphs */
+    margin-bottom: 1rem; /* Add some space below paragraphs */
+  }
 
     /* 
       HERO SECTION 
@@ -100,24 +117,23 @@
       align-items: center;
       text-align: left;
     }
-    /* Container for the about text + headshot */
+   
     .about-content {
       width: 80%;
       max-width: 1200px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 250px auto; /* image on the left, text on the right */
+      grid-template-columns: 250px auto; 
       gap: 2rem;
-      align-items: end; /* image bottom aligns with text bottom */
+      align-items: end; 
     }
-    /* Add spacing between navigation items */
 .nav-links a {
-  margin-right: 20px; /* Adjust the value to increase spacing */
+  margin-right: 20px; 
   text-decoration: none;
 }
 
 .nav-links a:last-child {
-  margin-right: 0; /* Remove margin for the last item */
+  margin-right: 0;
 }
     .about-content img {
       border-radius: 50%;
@@ -129,7 +145,7 @@
     }
     .about-text {
       align-self: end;
-      margin-bottom: 30px; /* so it lines up with the image bottom */
+      margin-bottom: 30px; 
     }
     .about-text h3 {
       font-size: 1.8rem;
@@ -140,10 +156,7 @@
       line-height: 1.4;
     }
 
-    /* Additional screens: CV, Research, Contact. 
-       Different background colors if desired. 
-       Each screen is just a placeholder here.
-    */
+    
     #cv {
       background: #efefef;
     }
@@ -154,10 +167,7 @@
       background: #FCFCFC;
     }
 
-    /* 
-      Scroll-to-top button style 
-      (You could also use a custom web component here.)
-    */
+    
     .scroll-top {
       position: fixed;
       bottom: 20px;
@@ -179,32 +189,32 @@
       opacity: 1;
     }
     .sidebar {
-      position: fixed; /* Keeps the sidebar visible at all times */
+      position: fixed;
       top: 0;
       left: 0;
       width: 250px;
-      height: 100vh; /* Full height of the viewport */
-      background-color: #2E3A59; /* Sidebar background color */
+      height: 100vh; 
+      background-color: #2E3A59;
       display: flex;
       flex-direction: column;
       padding: 0rem;
-      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Optional shadow for better visibility */
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); 
     }
     .sidebar-header {
-      color: white; /* Make the Navigation text white */
+      color: white; 
       font-size: 2rem;
-      margin: 0; /* Remove margins to align it at the top */
-      padding: 1rem; /* Add padding for spacing inside the sidebar */
+      margin: 0; 
+      padding: 1rem; 
       text-align: center;
-      background-color: black; /* Match the sidebar background */
+      background-color: black;
     }
     .sidebar ul {
       list-style: none;
       padding: 1;
       margin: 1;
-      flex-grow: 1; /* Make the list of links take up the remaining space */
+      flex-grow: 1;
       display: flex;
-      flex-direction: column; /* Stack links vertically */
+      flex-direction: column; 
       justify-content: space-evenly;
     }
 
@@ -216,25 +226,19 @@
       text-decoration: none;
       color: white;
       font-size: 1.5rem;
-      text-align: center; /* Center the text inside the links */
+      text-align: center; 
     }
 
-    /* Main Content Styles */
     .content {
-      margin-left: 250px; /* Offset the content to the right of the sidebar */
+      margin-left: 250px;
       padding: 2rem;
     }
   </style>
 </head>
 <body>
-  <!-- 
-    Wrap everything in your portfolio-sidebar-theme component.
-    The automatically generated sidebar will appear on the left. 
-    The custom logic in your updated JS file will detect these “screens” 
-    and link to them by ID. 
-  -->
+
+  
   <body>
-    <!-- Sidebar -->
     <nav class="sidebar">
       <h2 class="sidebar-header">Navigation</h2>
       <ul>
@@ -245,20 +249,16 @@
       </ul>
     </nav>
   
-    <!-- Main Content -->
     <div class="content">
   <portfolio-sidebar-theme title="Portfolio">
-    <!-- Hero screen: HOME -->
     <portfolio-screen id="home" title="HOME" class="screen">
       <img src="https://upload.wikimedia.org/wikipedia/en/thumb/3/3a/Penn_State_Nittany_Lions_logo.svg/1200px-Penn_State_Nittany_Lions_logo.svg.png" alt="Logo" class="logo" />
       <h1>Shane Godfrey's Professional</h1>
       <h2>Portfolio</h2>
     </portfolio-screen>
 
-    <!-- About screen -->
     <portfolio-screen id="about" title="About" class="screen">
       <div class="about-content">
-        <!-- Example user headshot -->
         <img src="https://media.licdn.com/dms/image/v2/D4E03AQF9tWJ_Rh-kcA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1689736148829?e=1750896000&v=beta&t=_v723NKVfduwUf-TP1c51ElcvwRpPNwi8HFZwcY660I" alt="User Headshot">
         <div class="about-text">
           <h3>About Me</h3>
@@ -266,62 +266,58 @@
         </div>
       </div>
     </portfolio-screen>
-
-    <!-- CV screen -->
-    <portfolio-screen id="Resume" title="CV" class="screen">
+    <portfolio-screen id="resume" title="Resume" class="screen">
       <h1>Resume</h1>
       <p>Show your education, experience, skills, etc.</p>
+      <p>
+        <a href="file:///Users/shanegodfrey/Downloads/Shane_Godfrey_Resume.pdf" target="_blank" style="color: blue; text-decoration: underline;">
+          View My Resume (PDF)
+        </a>
+      </p>
     </portfolio-screen>
-
-    <!-- Research screen -->
+    
     <portfolio-screen id="Projects" title="Research" class="screen">
       <h1>Projects</h1>
       <p>Highlight your research topics, publications, interests.</p>
     </portfolio-screen>
     <style>
-      /* Add more space between headers */
       h1, h2, h3 {
-        margin-top: 15rem; /* Adjust this value to match the spacing between Portfolio and About Me */
+        margin-top: 15rem; 
         margin-bottom: 1rem;
-        text-align: center; /* Adjust this value to match the spacing */
+        text-align: center; 
       }
       p {
-        margin-top: 0; /* Add space above the text */
-        margin-bottom: 2rem; /* Add space below the text */
-        text-align: center; /* Center the text */
+        margin-top: 0; 
+        margin-bottom: 2rem; 
+        text-align: center; 
       }
     </style>
 
-    <!-- Contact screen -->
     <portfolio-screen id="contact" title="Contact" class="screen">
       <h1>Contact</h1>
       <p>
         <strong>Email:</strong> <a href="mailto:Scg5440@psu.edu">Scg5440@psu.edu</a>
       </p>
-      <!-- Add this under the Contact section -->
-<section id="contact">
-  <h2>Get in contact with me</h2>
-  <!-- Embed Google Form -->
-  <iframe 
-    src="https://docs.google.com/forms/d/e/1FAIpQLSemufOM3ARM3cQmnkR6EXVA__3kZBYRMLhjmktbCXJz6Bpxew/viewform?usp=header" 
-    width="100%" 
-    height="800" 
-    frameborder="0" 
-    marginheight="0" 
-    marginwidth="0">
-    Loading…
-  </iframe>
-</section>
-    </portfolio-screen>
+      <section id="contact">
+        <h2>Get in contact with me</h2>
+        <!-- Embed Google Form -->
+        <iframe 
+          src="https://docs.google.com/forms/d/e/1FAIpQLSemufOM3ARM3cQmnkR6EXVA__3kZBYRMLhjmktbCXJz6Bpxew/viewform?usp=header" 
+          width="100%" 
+          height="800" 
+          frameborder="0" 
+          marginheight="0" 
+          marginwidth="0">
+          Loading…
+        </iframe>
+      </section>
+          </portfolio-screen>
 
-    <!-- Scroll to top button -->
     <div class="scroll-top" id="scrollTopBtn">↑</div>
   </portfolio-sidebar-theme>
 
-  <!-- Load your updated sidebar JS logic -->
   <script type="module" src="portfolio-sidebar-theme.js"></script>
   <script>
-    // Simple "scroll back to top" action
     const scrollBtn = document.getElementById('scrollTopBtn');
     scrollBtn.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
