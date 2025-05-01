@@ -250,6 +250,28 @@
       margin-left: 250px;
       padding: 2rem;
     }
+    h2 {
+  margin-top: 1rem; /* Adjust as needed */
+}
+
+ul {
+  margin-bottom: 0; /* Remove bottom margin from the Skills list */
+}
+
+  /* Adjust font size for the Resume section */
+  #resume {
+    font-size: 0.9rem; /* Adjust the value as needed (e.g., 0.8rem, 0.9rem, etc.) */
+  }
+
+  #resume h1, #resume h2 {
+    text-align: left;
+  }
+  
+  html {
+    scroll-behavior: smooth; /* Enables smooth scrolling */
+  }
+</style>
+
   </style>
 </head>
 <body>
@@ -260,8 +282,10 @@
       <h2 class="sidebar-header">Navigation</h2>
       <ul>
         <li><a href="#home">Home</a></li>
-        <li><a href="#Resume">Resume</a></li>
-        <li><a href="#Project">Project</a></li>
+        <li><a href="#resume">Resume</a> <!-- Changed href to match the Resume section ID -->
+        </li>
+        <li><a href="#Projects">Projects</a> <!-- Changed href to match the Projects section ID -->
+        </li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -269,7 +293,6 @@
     <div class="content">
   <portfolio-sidebar-theme title="Portfolio">
     <portfolio-screen id="home" title="HOME" class="screen">
-      <img src="https://upload.wikimedia.org/wikipedia/en/thumb/3/3a/Penn_State_Nittany_Lions_logo.svg/1200px-Penn_State_Nittany_Lions_logo.svg.png" alt="Logo" class="logo" />
       <h1>Shane Godfrey's Professional</h1>
       <h2>Portfolio</h2>
     </portfolio-screen>
@@ -283,8 +306,10 @@
         </div>
       </div>
     </portfolio-screen>
+   
     <portfolio-screen id="resume" title="Resume" class="screen">
       <h1>Resume</h1>
+<<<<<<< Updated upstream
       <p>Show your education, experience, skills, etc.</p>
       <p>
         <a href="file:///Users/shanegodfrey/Downloads/Shane_Godfrey_Resume.pdf" target="_blank" style="color: blue; text-decoration: underline;">
@@ -296,6 +321,24 @@
     <!-- Research screen -->
     <portfolio-screen id="research" title="Research" class="screen">
       <h1>Research</h1>
+=======
+      <img src="Screenshot%202025-05-01%20at%2012.39.42%E2%80%AFPM.png" alt="Screenshot" style="width: 100%; max-width: 600px; margin: 1rem 0;">
+  <p>Download my Resume: 
+    <a href="https://docs.google.com/document/d/1pO9X8vA3o8eA74YhIy7p0nk9MgHM21XqI68-7kthnj0/edit?usp=sharing" target="_blank">Resume</a>
+  </p>
+  <p>Link to LinkedIn: 
+    <a href="https://www.linkedin.com/in/shane-godfrey-04b52b284/" target="_blank">LinkedIn</a>
+  </p>
+  <p>Link to GitHub: 
+    <a href="https://github.com/TheRizzler-Maxer" target="_blank">GitHub</a>
+  </p>
+</portfolio-screen>
+
+   
+    
+    <portfolio-screen id="Projects" title="Projects" class="screen">
+      <h1>Projects</h1>
+>>>>>>> Stashed changes
       <p>Highlight your research topics, publications, interests.</p>
     </portfolio-screen>
     <style>
@@ -310,26 +353,25 @@
         text-align: center; 
       }
     </style>
-
     <portfolio-screen id="contact" title="Contact" class="screen">
       <h1>Contact</h1>
       <p>
         <strong>Email:</strong> <a href="mailto:Scg5440@psu.edu">Scg5440@psu.edu</a>
       </p>
-      <section id="contact">
-        <h2>Get in contact with me</h2>
-        <!-- Embed Google Form -->
-        <iframe 
-          src="https://docs.google.com/forms/d/e/1FAIpQLSemufOM3ARM3cQmnkR6EXVA__3kZBYRMLhjmktbCXJz6Bpxew/viewform?usp=header" 
-          width="100%" 
-          height="800" 
-          frameborder="0" 
-          marginheight="0" 
-          marginwidth="0">
-          Loading…
-        </iframe>
-      </section>
-          </portfolio-screen>
+
+<section id="contact with me">
+  <h2>Get in contact with me</h2>
+  <iframe 
+    src="https://docs.google.com/forms/d/e/1FAIpQLSemufOM3ARM3cQmnkR6EXVA__3kZBYRMLhjmktbCXJz6Bpxew/viewform?usp=header" 
+    width="100%" 
+    height="800" 
+    frameborder="0" 
+    marginheight="0" 
+    marginwidth="0">
+    Loading…
+  </iframe>
+</section>
+    </portfolio-screen>
 
     <div class="scroll-top" id="scrollTopBtn">↑</div>
   </portfolio-sidebar-theme>
