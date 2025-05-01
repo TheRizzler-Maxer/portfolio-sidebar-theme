@@ -8,7 +8,7 @@
   <style>
     html, body {
       margin: 0;
-      padding: 0;
+      padding: 10px;
       font-family: 'Arial', sans-serif;
       overflow-x: hidden;
       height: 100%;
@@ -160,8 +160,25 @@
     #cv {
       background: #efefef;
     }
-    #research {
+    #resume h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    #projects {
       background: #F5F5F5;
+      text-align: center;
+    }
+
+    #projects h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      
+    }
+    #projects img {
+      width: 100%;
+      max-width: 800px;
+      margin-bottom: 20px;
     }
     #contact {
       background: #FCFCFC;
@@ -275,9 +292,10 @@
         </a>
       </p>
     </portfolio-screen>
-    
-    <portfolio-screen id="Projects" title="Research" class="screen">
-      <h1>Projects</h1>
+
+    <!-- Research screen -->
+    <portfolio-screen id="research" title="Research" class="screen">
+      <h1>Research</h1>
       <p>Highlight your research topics, publications, interests.</p>
     </portfolio-screen>
     <style>

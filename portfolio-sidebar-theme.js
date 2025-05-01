@@ -68,7 +68,7 @@ export class PortfolioSidebarTheme extends DDDSuper(I18NMixin(LitElement)) {
           left: 0;
           width: 200px;
           height: 100vh;
-          background: #333;
+          background: #041E42;
           color: #fff;
           overflow-y: auto;
           padding: var(--ddd-spacing-2);
@@ -84,7 +84,7 @@ export class PortfolioSidebarTheme extends DDDSuper(I18NMixin(LitElement)) {
           transition: background 0.3s;
         }
         .sidebar a:hover {
-          background: #444;
+          filter: brightness(0.5);
         }
         .content {
           margin-left: 200px;
