@@ -2,404 +2,230 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My Portfolio</title>
-  <!-- Basic resets and default styles -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shane Godfrey's Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
     html, body {
       margin: 0;
-      padding: 10px;
-      font-family: 'Arial', sans-serif;
-      overflow-x: hidden;
-      height: 100%;
-      background-color: #fff; /* White background to match comp */
-    }
-    /* Force smooth scrolling in modern browsers */
-    html {
+      padding: 0;
+      font-family: 'Lato', sans-serif;
+      background-color: #f4f6f8;
+      color: #333;
       scroll-behavior: smooth;
+      min-height: 100%;
     }
-
-    /* 
-      Override the sidebar’s default dark gray to match the navy-ish 
-      color in your screenshot (#2E3A59 is an example) 
-    */
-    portfolio-sidebar-theme .sidebar {
-      background: #2E3A59 !important; /* override default #333 */
+    a {
+      color: #002663;
+      text-decoration: underline;
+      transition: color 0.3s;
     }
-    
-    /* Make the anchor links in the sidebar bigger / spaced out */
-    portfolio-sidebar-theme .sidebar a {
-      font-size: 1.1rem;
+    a:hover {
+      color: #00509e;
+    }
+    h1 {
+      margin: 2rem 0 1.5rem;
+      text-align: center;
+      color: #000;
+      font-size: 2.5rem;
+      font-weight: 700;
+    }
+    h2 {
+      margin: 1.5rem 0 1rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #000;
+      text-align: center;
+    }
+    p {
       margin-bottom: 1.5rem;
+      font-size: 1rem;
+      line-height: 1.6;
+      text-align: center;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      color: #333;
     }
-    
-    /* 
-      We wrap each “screen” section in <portfolio-screen> 
-      OR regular <section> tags inside your <portfolio-sidebar-theme>.
-      Each one should fill the viewport.
-    */
-    .screen {
+    .header {
+      background: rgba(0,38,99,0.85);
+      padding: 2rem 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    .header h1,
+    .header h2 {
+      color: #fff;
+    }
+    .sidebar {
+      background: rgba(255,255,255,0.9);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       display: flex;
-    flex-direction: column;
-    justify-content: center; /* Center vertically */
-    align-items: center; /* Center horizontally */
-    text-align: center; /* Center text alignment */
-    height: 100vh; /* Make each section fill the viewport */
-    padding: 2rem;
-    box-sizing: border-box;
-  }
-  #about {
-    align-items: flex-start; /* Align content to the left */
-    text-align: left; /* Align text to the left */
-    padding-left: 2rem; /* Add some padding to the left */
-  }
-
-  h1, h2, h3 {
-    margin-top: 1rem; /* Add some space above headers */
-    margin-bottom: 1rem; /* Add some space below headers */
-  }
-
-  p {
-    margin-top: 0.5rem; /* Add some space above paragraphs */
-    margin-bottom: 1rem; /* Add some space below paragraphs */
-  }
-
-    /* 
-      HERO SECTION 
-      Displayed first: includes your logo, “Professional” text, 
-      and a large “PORTFOLIO” heading
-    */
-    #home {
-      background: #fff; /* White background */
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: center;
+      padding: 0.75rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
-    #home .logo {
-      width: 80px;
-      margin-bottom: 1rem;
-    }
-    #home h1 {
-      font-size: 2rem;
-      margin: 0.2rem 0;
-    }
-    #home h2 {
-      font-size: 3rem;
-      margin: 0;
-      letter-spacing: 0.1rem;
-    }
-    
-    /* 
-      The WAVE that separates the hero from the "About" content 
-      We position it at the bottom of #home.
-    */
-    #home .wave {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: calc(100% - 200px); /* subtract sidebar width if you like */
-      /* push it behind the content in #home */
-      z-index: -1;
-    }
-
-    /*
-      ABOUT SECTION
-      Placed directly under the hero wave. 
-      We place the portrait image on the bottom-left 
-      and text on the bottom-right, simulating your comp.
-    */
-    #about {
-      background: #fff; /* white section after wave */
+    .sidebar ul {
+      list-style: none;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: left;
-    }
-   
-    .about-content {
-      width: 80%;
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 250px auto; 
       gap: 2rem;
-      align-items: end; 
+      margin: 0;
+      padding: 0;
     }
-.nav-links a {
-  margin-right: 20px; 
-  text-decoration: none;
-}
-
-.nav-links a:last-child {
-  margin-right: 0;
-}
-    .about-content img {
-      border-radius: 50%;
+    .sidebar li a {
+      font-weight: 500;
+      position: relative;
+      padding: 0.25rem 0;
+    }
+    .sidebar li a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      background: #002663;
+      transition: width 0.3s;
+    }
+    .sidebar li a:hover::after {
+      width: 100%;
+    }
+    .content {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    section {
+      background: rgba(255,255,255,0.85);
+      border-radius: 8px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    section:hover {
+      transform: translateY(-4px);
+    }
+    #about,
+    #projects {
+      background: #002663;
+      color: #fff;
+    }
+    #about h2,
+    #about p,
+    #projects h2,
+    #projects p {
+      color: #fff;
+    }
+    /* White links in Projects section */
+    #projects a {
+      color: #fff;
+    }
+    #projects a:hover {
+      color: #ddd;
+    }
+    .profile-picture {
+      display: block;
+      margin: 1rem auto;
       width: 150px;
       height: 150px;
+      border-radius: 50%;
       object-fit: cover;
-      justify-self: center;
-      align-self: end;
+      border: 3px solid #335293;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
-    .about-text {
-      align-self: end;
-      margin-bottom: 30px; 
+    .resume-image,
+    .projects-image {
+      display: block;
+      margin: 1rem auto;
+      max-width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
-    .about-text h3 {
-      font-size: 1.8rem;
-      margin-bottom: 0.5rem;
-    }
-    .about-text p {
-      font-size: 1rem;
-      line-height: 1.4;
-    }
-
-    
-    #cv {
-      background: #efefef;
-    }
-    #resume h1 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      text-align: center;
-    }
-    #projects {
-      background: #F5F5F5;
-      text-align: center;
-    }
-
-    #projects h1 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      
-    }
-    #projects img {
-      width: 100%;
-      max-width: 800px;
-      margin-bottom: 20px;
-    }
-    #contact {
-      background: #FCFCFC;
-    }
-
-    
     .scroll-top {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      width: 45px;
-      height: 45px;
-      background: #555;
+      width: 50px;
+      height: 50px;
+      background: #002663;
       color: #fff;
       border-radius: 50%;
       text-align: center;
-      line-height: 45px;
-      font-size: 1.3rem;
+      line-height: 50px;
+      font-size: 1.5rem;
       cursor: pointer;
-      opacity: 0.7;
-      transition: opacity 0.3s;
-      z-index: 9999;
+      opacity: 0.8;
+      transition: opacity 0.3s, transform 0.3s;
+      z-index: 100;
     }
     .scroll-top:hover {
       opacity: 1;
+      transform: translateY(-2px);
     }
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 250px;
-      height: 100vh; 
-      background-color: #2E3A59;
-      display: flex;
-      flex-direction: column;
-      padding: 0rem;
-      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); 
-    }
-    .sidebar-header {
-      color: white; 
-      font-size: 2rem;
-      margin: 0; 
-      padding: 1rem; 
-      text-align: center;
-      background-color: black;
-    }
-    .sidebar ul {
-      list-style: none;
-      padding: 1;
-      margin: 1;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column; 
-      justify-content: space-evenly;
-    }
-
-    .sidebar ul li {
-      margin-bottom: 0;
-    }
-
-    .sidebar ul li a {
-      text-decoration: none;
-      color: white;
-      font-size: 1.5rem;
-      text-align: center; 
-    }
-
-    .content {
-      margin-left: 250px;
-      padding: 2rem;
-    }
-    h2 {
-  margin-top: 1rem; /* Adjust as needed */
-}
-
-ul {
-  margin-bottom: 0; /* Remove bottom margin from the Skills list */
-}
-
-  /* Adjust font size for the Resume section */
-  #resume {
-    font-size: 0.9rem; /* Adjust the value as needed (e.g., 0.8rem, 0.9rem, etc.) */
-  }
-
-  #resume h1, #resume h2 {
-    text-align: left;
-  }
-  
-  html {
-    scroll-behavior: smooth; /* Enables smooth scrolling */
-  }
-</style>
-<style>
-
-  h2 {
-    margin-top: 1rem; /* Adjust as needed */
-  }
-  
-  ul {
-    margin-bottom: 0; /* Remove bottom margin from the Skills list */
-  }
-  
-  /* Adjust font size for the Resume section */
-  #resume {
-    font-size: 0.9rem; /* Adjust the value as needed (e.g., 0.8rem, 0.9rem, etc.) */
-  }
-  
-  #resume h1, #resume h2 {
-    text-align: left;
-  }
-  
-  html {
-    scroll-behavior: smooth; /* Enables smooth scrolling */
-  }
-</style>
-
+  </style>
 </head>
 <body>
-
+  <header class="header">
+    <h1>Shane Godfrey's</h1>
+    <h2>Professional Portfolio</h2>
+  </header>
   
-  <body>
-    <nav class="sidebar">
-      <h2 class="sidebar-header">Navigation</h2>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#resume">Resume</a> <!-- Changed href to match the Resume section ID -->
-        </li>
-        <li><a href="#Projects">Projects</a> <!-- Changed href to match the Projects section ID -->
-        </li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  
-    <div class="content">
-  <portfolio-sidebar-theme title="Portfolio">
-    <portfolio-screen id="home" title="HOME" class="screen">
-      <h1>Shane Godfrey's Professional</h1>
-      <h2>Portfolio</h2>
-    </portfolio-screen>
+  <nav class="sidebar">
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#resume">Resume</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-    <portfolio-screen id="about" title="About" class="screen">
-      <div class="about-content">
-        <img src="https://media.licdn.com/dms/image/v2/D4E03AQF9tWJ_Rh-kcA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1689736148829?e=1750896000&v=beta&t=_v723NKVfduwUf-TP1c51ElcvwRpPNwi8HFZwcY660I" alt="User Headshot">
-        <div class="about-text">
-          <h3>About Me</h3>
-          <p>Hi, I'm Shane, a second-year student at Penn State University. I'm currently studying Enterprise Integration Technology in the College of Information Sciences and Technology.</p>
-        </div>
-      </div>
-    </portfolio-screen>
-   
-    <portfolio-screen id="resume" title="Resume" class="screen">
-      <h1>Resume</h1>
+  <div class="content">
+    <section id="home">
+      <h2>Welcome to My Portfolio</h2>
+      <p>Hi, I'm Shane Godfrey, a second-year student at Penn State University studying Enterprise Integration Technology. Explore my work to learn more about my skills, projects, and experience.</p>
+    </section>
 
-      <p>Show your education, experience, skills, etc.</p>
-      <p>
-        <a href="file:///Users/shanegodfrey/Downloads/Shane_Godfrey_Resume.pdf" target="_blank" style="color: blue; text-decoration: underline;">
-          View My Resume (PDF)
-        </a>
-      </p>
-    </portfolio-screen>
+    <section id="about">
+      <h2>About Me</h2>
+      <img src="https://media.licdn.com/dms/image/v2/D4E03AQF9tWJ_Rh-kcA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1689736148829?e=1750896000&v=beta&t=_v723NKVfduwUf-TP1c51ElcvwRpPNwi8HFZwcY660I"
+           alt="Shane Godfrey headshot"
+           class="profile-picture">
+      <p>I’m pursuing a degree in Enterprise Integration Technology at Penn State’s College of Information Sciences and Technology, where I focus on designing efficient, enterprise-grade solutions. As an active member of Penn State’s THON, I’m proud to support families affected by childhood cancer.</p>
+    </section>
 
-    <!-- Research screen -->
-    <portfolio-screen id="research" title="Research" class="screen">
-      <h1>Research</h1>
-      <img src="Screenshot%202025-05-01%20at%2012.39.42%E2%80%AFPM.png" alt="Screenshot" style="width: 100%; max-width: 600px; margin: 1rem 0;">
-  <p>Download my Resume: 
-    <a href="https://docs.google.com/document/d/1pO9X8vA3o8eA74YhIy7p0nk9MgHM21XqI68-7kthnj0/edit?usp=sharing" target="_blank">Resume</a>
-  </p>
-  <p>Link to LinkedIn: 
-    <a href="https://www.linkedin.com/in/shane-godfrey-04b52b284/" target="_blank">LinkedIn</a>
-  </p>
-  <p>Link to GitHub: 
-    <a href="https://github.com/TheRizzler-Maxer" target="_blank">GitHub</a>
-  </p>
-</portfolio-screen>
+    <section id="resume">
+      <h2>Resume</h2>
+      <img src="Screenshot%202025-05-01%20at%2012.39.42%E2%80%AFPM.png" alt="Resume Preview" class="resume-image">
+      <p><a href="https://docs.google.com/document/d/1pO9X8vA3o8eA74YhIy7p0nk9MgHM21XqI68-7kthnj0/edit?usp=sharing" target="_blank">View My Resume</a></p>
+      <p><a href="https://www.linkedin.com/in/shane-godfrey-04b52b284/" target="_blank">LinkedIn Profile</a></p>
+      <p><a href="https://github.com/TheRizzler-Maxer" target="_blank">GitHub Repositories</a></p>
+    </section>
 
-   
-    
-    <portfolio-screen id="Projects" title="Projects" class="screen">
-      <h1>Projects</h1>
-      <p>Highlight your research topics, publications, interests.</p>
-    </portfolio-screen>
-    <style>
-      h1, h2, h3 {
-        margin-top: 15rem; 
-        margin-bottom: 1rem;
-        text-align: center; 
-      }
-      p {
-        margin-top: 0; 
-        margin-bottom: 2rem; 
-        text-align: center; 
-      }
-    </style>
-    <portfolio-screen id="contact" title="Contact" class="screen">
+    <section id="projects">
+      <h2>Projects</h2>
+      <p>This is a project my team and I collaborated on to link custom GitHub avatars with users' GitHub accounts, and I’m incredibly proud of the final result we achieved.</p>
+      <img src="Screenshot%202025-05-03%20at%206.12.23%E2%80%AFPM.png" alt="Projects Preview" class="projects-image">
+      <p><a href="https://github.com/TheRizzler-Maxer/github-rpg-contributors" target="_blank">View My GitHub RPG Contributors Project</a></p>
+    </section>
+
+    <section id="contact">
       <h1>Contact</h1>
-      <p>
-        <strong>Email:</strong> <a href="mailto:Scg5440@psu.edu">Scg5440@psu.edu</a>
-      </p>
+      <p>Email: <a href="mailto:scg5440@psu.edu">scg5440@psu.edu</a></p>
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdfqjgOESL7Nn16cqjFAToSv60UaQPMfuY3fY391JmMLvpBng/viewform?usp=header"
+              width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+    </section>
+  </div>
 
-<section id="contact with me">
-  <h2>Get in contact with me</h2>
-  <iframe 
-    src="https://docs.google.com/forms/d/e/1FAIpQLSemufOM3ARM3cQmnkR6EXVA__3kZBYRMLhjmktbCXJz6Bpxew/viewform?usp=header" 
-    width="100%" 
-    height="800" 
-    frameborder="0" 
-    marginheight="0" 
-    marginwidth="0">
-    Loading…
-  </iframe>
-</section>
-    </portfolio-screen>
+  <div class="scroll-top" id="scrollTopBtn">↑</div>
 
-    <div class="scroll-top" id="scrollTopBtn">↑</div>
-  </portfolio-sidebar-theme>
-
-  <script type="module" src="portfolio-sidebar-theme.js"></script>
   <script>
-    const scrollBtn = document.getElementById('scrollTopBtn');
-    scrollBtn.addEventListener('click', () => {
+    document.getElementById('scrollTopBtn').addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   </script>

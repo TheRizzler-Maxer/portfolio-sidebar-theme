@@ -40,7 +40,6 @@ export class PortfolioSidebarTheme extends DDDSuper(I18NMixin(LitElement)) {
     });
   }
 
-  // Define reactive properties including sidebarLinks (an array of link objects)
   static get properties() {
     return {
       ...super.properties,
@@ -49,19 +48,11 @@ export class PortfolioSidebarTheme extends DDDSuper(I18NMixin(LitElement)) {
     };
   }
 
-  // Scoped styles including layout for sidebar and content area
   static get styles() {
     return [super.styles,
       css`
-        :host {
-          display: block;
-          color: var(--ddd-theme-primary);
-          background-color: var(--ddd-theme-accent);
-          font-family: var(--ddd-font-navigation);
-        }
-        .container {
-          display: flex;
-        }
+        :host { display: block; }
+        .container { display: flex; }
         .sidebar {
           position: fixed;
           top: 0;
@@ -75,35 +66,19 @@ export class PortfolioSidebarTheme extends DDDSuper(I18NMixin(LitElement)) {
           box-sizing: border-box;
           z-index: 1000;
         }
-        .sidebar a {
-          color: #fff;
-          text-decoration: none;
-          display: block;
-          margin-bottom: 1em;
-          cursor: pointer;
-          transition: background 0.3s;
-        }
-        .sidebar a:hover {
-          filter: brightness(0.5);
-        }
-        .content {
-          margin-left: 200px;
-          scroll-behavior: smooth;
-        }
-        h3 span {
-          font-size: var(--portfolio-sidebar-theme-label-font-size, var(--ddd-font-size-s));
-        }
-      `];
+        .sidebar a { color: #fff; text-decoration: none; display: block; margin-bottom: 1em; }
+        .sidebar a:hover { filter: brightness(0.5); }
+        .content { margin-left: 200px; scroll-behavior: smooth; }
+      `]
   }
 
-  // Render the sidebar and the content slot
   render() {
     return html`
       <div class="container">
         <div class="sidebar">
           <h3><span>${this.t.title}:</span> ${this.title}</h3>
           ${this.sidebarLinks.map(link => html`
-            <a href="#${link.id}" @click="${() => this.navigate(link.id)}">${link.title}</a>
+            <a href="#${link.id}" @click="${e => this.navigate(e, link.id)}">${link.title}</a>
           `)}
         </div>
         <div class="content">
@@ -113,7 +88,6 @@ export class PortfolioSidebarTheme extends DDDSuper(I18NMixin(LitElement)) {
     `;
   }
 
-  // When the slot content changes, update the sidebar links from any portfolio-screen element.
   handleSlotChange(e) {
     const nodes = e.target.assignedElements({ flatten: true });
     const links = [];
@@ -121,47 +95,46 @@ export class PortfolioSidebarTheme extends DDDSuper(I18NMixin(LitElement)) {
       if (el.tagName && el.tagName.toLowerCase() === 'portfolio-screen') {
         let id = el.getAttribute("id");
         if (!id) {
-          // If no ID is set, generate one.
           id = "screen-" + Math.random().toString(36).substring(2, 7);
           el.setAttribute("id", id);
         }
-        links.push({
-          id: id,
-          title: el.getAttribute("title") || "Screen"
-        });
+        links.push({ id, title: el.getAttribute("title") || "Screen" });
       }
     });
     this.sidebarLinks = links;
   }
 
-  // Handle clicking on sidebar links: scroll to the target element and update URL hash.
-  navigate(id) {
+  navigate(event, id) {
+    event.preventDefault();
     const target = this.querySelector(`#${id}`);
     if (target) {
-      target.scrollIntoView({ behavior: "smooth" });
-      window.history.pushState(null, "", `#${id}`);
+      // Calculate offsets for fixed header/sidebar
+      const headerEl = document.querySelector('header');
+      const sidebarEl = this.shadowRoot
+        ? this.shadowRoot.querySelector('.sidebar')
+        : document.querySelector('.sidebar');
+      const headerHeight = headerEl ? headerEl.offsetHeight : 0;
+      const navWidth = sidebarEl ? sidebarEl.offsetWidth : 0;
+      const topOffset = headerHeight;
+      const rect = target.getBoundingClientRect();
+      const scrollY = window.pageYOffset + rect.top - topOffset;
+      window.scrollTo({ top: scrollY, behavior: 'smooth' });
+      window.history.pushState(null, '', `#${id}`);
     }
   }
 
-  // On load, if a hash is set in the URL, scroll to that section.
   connectedCallback() {
     super.connectedCallback();
-    window.addEventListener("load", () => {
+    window.addEventListener('load', () => {
       if (window.location.hash) {
-        const target = this.querySelector(window.location.hash);
-        if (target) {
-          setTimeout(() => target.scrollIntoView({ behavior: "smooth" }), 100);
-        }
+        const id = window.location.hash.substring(1);
+        setTimeout(() => this.navigate({ preventDefault:()=>{} }, id), 100);
       }
     });
   }
 
-  /**
-   * haxProperties integration via file reference
-   */
   static get haxProperties() {
-    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
-      .href;
+    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url).href;
   }
 }
 
