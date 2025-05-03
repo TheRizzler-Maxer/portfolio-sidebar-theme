@@ -6,9 +6,8 @@
   <title>Shane Godfrey's Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after {
-      box-sizing: border-box;
-    }
+    /* General Reset */
+    *, *::before, *::after { box-sizing: border-box; }
     html, body {
       margin: 0;
       padding: 0;
@@ -27,17 +26,17 @@
       color: #00509e;
     }
     h1 {
-      margin: 2rem 0 1.5rem;
+      margin: 2rem 0 0.5rem;
       text-align: center;
-      color: #000;
+      color: #fff;
       font-size: 2.5rem;
       font-weight: 700;
     }
     h2 {
-      margin: 1.5rem 0 1rem;
+      margin: 0;
       font-size: 1.5rem;
       font-weight: 700;
-      color: #000;
+      color: #fff;
       text-align: center;
     }
     p {
@@ -46,22 +45,31 @@
       line-height: 1.6;
       text-align: center;
       max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
+      margin: 0 auto 1.5rem;
       color: #333;
     }
     .header {
-      background: rgba(0,38,99,0.85);
+      background: #002663;
       padding: 2rem 1rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      position: relative;
     }
-    .header h1,
-    .header h2 {
-      color: #fff;
+    .header-logo {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 160px;
+      height: auto;
+    }
+    .header-logo.left {
+      left: 10%;
+    }
+    .header-logo.right {
+      right: 10%;
     }
     .sidebar {
-      background: rgba(255,255,255,0.9);
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       display: flex;
       justify-content: center;
       padding: 0.75rem 0;
@@ -100,28 +108,23 @@
       padding: 0 1rem;
     }
     section {
-      background: rgba(255,255,255,0.85);
+      background: rgba(255, 255, 255, 0.85);
       border-radius: 8px;
       padding: 2rem;
       margin-bottom: 2rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s;
     }
     section:hover {
       transform: translateY(-4px);
     }
-    #about,
-    #projects {
+    #about, #projects {
       background: #002663;
       color: #fff;
     }
-    #about h2,
-    #about p,
-    #projects h2,
-    #projects p {
+    #about h2, #about p, #projects h2, #projects p {
       color: #fff;
     }
-    /* White links in Projects section */
     #projects a {
       color: #fff;
     }
@@ -136,15 +139,14 @@
       border-radius: 50%;
       object-fit: cover;
       border: 3px solid #335293;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     }
-    .resume-image,
-    .projects-image {
+    .resume-image, .projects-image {
       display: block;
       margin: 1rem auto;
       max-width: 100%;
       border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     }
     .scroll-top {
       position: fixed;
@@ -171,8 +173,10 @@
 </head>
 <body>
   <header class="header">
+    <img src="https://logosarchive.com/wp-content/uploads/2021/12/Penn-State-University-logo.svg" alt="Penn State Logo" class="header-logo left">
     <h1>Shane Godfrey's</h1>
     <h2>Professional Portfolio</h2>
+    <img src="https://logosarchive.com/wp-content/uploads/2021/12/Penn-State-University-logo.svg" alt="Penn State Logo" class="header-logo right">
   </header>
   
   <nav class="sidebar">
@@ -193,9 +197,7 @@
 
     <section id="about">
       <h2>About Me</h2>
-      <img src="https://media.licdn.com/dms/image/v2/D4E03AQF9tWJ_Rh-kcA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1689736148829?e=1750896000&v=beta&t=_v723NKVfduwUf-TP1c51ElcvwRpPNwi8HFZwcY660I"
-           alt="Shane Godfrey headshot"
-           class="profile-picture">
+      <img src="https://media.licdn.com/dms/image/v2/D4E03AQF9tWJ_Rh-kcA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1689736148829?e=1750896000&v=beta&t=_v723NKVfduwUf-TP1c51ElcvwRpPNwi8HFZwcY660I" alt="Shane Godfrey headshot" class="profile-picture">
       <p>I’m pursuing a degree in Enterprise Integration Technology at Penn State’s College of Information Sciences and Technology, where I focus on designing efficient, enterprise-grade solutions. As an active member of Penn State’s THON, I’m proud to support families affected by childhood cancer.</p>
     </section>
 
@@ -217,8 +219,7 @@
     <section id="contact">
       <h1>Contact</h1>
       <p>Email: <a href="mailto:scg5440@psu.edu">scg5440@psu.edu</a></p>
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdfqjgOESL7Nn16cqjFAToSv60UaQPMfuY3fY391JmMLvpBng/viewform?usp=header"
-              width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdfqjgOESL7Nn16cqjFAToSv60UaQPMfuY3fY391JmMLvpBng/viewform?usp=header" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
     </section>
   </div>
 
