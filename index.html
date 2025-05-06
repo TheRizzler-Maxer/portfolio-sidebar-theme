@@ -111,7 +111,7 @@
     portfolio-screen#contact { background-color: #fff3e0; color: var(--primary); }
     h1 { margin: var(--spacing) 0 0.5rem; font-size: 2.5rem; }
     h2 { margin: 0; font-size: 4rem; }
-    h4 { margin: var(--spacing) 0; font-size: 2.4rem; }
+    h4 { margin: var(--spacing) 0; font-size: 2.5rem; }
     p {
       width: 90%;
       margin: var(--spacing) auto;
@@ -119,8 +119,8 @@
       line-height: 1.6;
     }
     .profile-preview-wrapper {
-      width: 150px;
-      height: 150px;
+      width: 225px;
+      height: 225px;
       border-radius: 50%;
       overflow: hidden;
       margin: var(--spacing) 0;
@@ -159,19 +159,6 @@
     import 'https://unpkg.com/@haxtheweb/portfolio-screen@latest/dist/portfolio-screen.js?module';
     import 'https://unpkg.com/@haxtheweb/scroll-button@latest/dist/scroll-button.js?module';
     import 'https://unpkg.com/@haxtheweb/simple-cta@latest/dist/simple-cta.js?module';
-
-    class ProfilePicture extends HTMLElement {
-      connectedCallback() {
-        const img = document.createElement('img');
-        img.src = this.getAttribute('src');
-        img.alt = this.getAttribute('alt') || 'Profile picture';
-        img.style.width = '100%';
-        img.style.height = '100%';
-        img.style.objectFit = 'cover';
-        this.appendChild(img);
-      }
-    }
-    customElements.define('profile-picture', ProfilePicture);
 
     window.addEventListener('DOMContentLoaded', () => {
       const hash = window.location.hash.substring(1);
@@ -223,8 +210,8 @@
 
     <portfolio-screen id="about">
       <h2>About Me</h2>
-      <div class="profile-preview-wrapper">
-        <profile-picture src="https://media.licdn.com/dms/image/v2/D4E03AQF9tWJ_Rh-kcA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1689736148829?e=1752105600&v=beta&t=GDheMcYO5YMhMQBLmyG93zmOc5uDJhWZQcFbtYJzPDU" alt="Shane Godfrey headshot"></profile-picture>
+      <div class="profile-preview-wrapper" style="display: flex; align-items: center; justify-content: center;">
+        <img src="https://media.licdn.com/dms/image/v2/D4E03AQF9tWJ_Rh-kcA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1689736148829?e=1752105600&v=beta&t=GDheMcYO5YMhMQBLmyG93zmOc5uDJhWZQcFbtYJzPDU" alt="Shane Godfrey headshot" style="width: 100%; height: 100%; object-fit: cover;">
       </div>
       <p>I’m pursuing a degree in Enterprise Integration Technology at Penn State’s College of Information Sciences and Technology, where I focus on designing efficient, enterprise-grade solutions. As an active member of Penn State’s THON, I’m proud to support families affected by childhood cancer.</p>
     </portfolio-screen>
