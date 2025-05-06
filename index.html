@@ -4,228 +4,170 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Shane Godfrey's Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
   <style>
-    /* General Reset */
+    :root {
+      --primary: #002663;
+      --accent: #f4f6f8;
+      --spacing: 1.5rem;
+      --transition: 0.3s;
+    }
     *, *::before, *::after { box-sizing: border-box; }
     html, body {
-      margin: 0;
-      padding: 0;
+      margin: 0; padding: 0;
       font-family: 'Lato', sans-serif;
-      background-color: #f4f6f8;
+      background: var(--accent);
       color: #333;
       scroll-behavior: smooth;
-      min-height: 100%;
-    }
-    a {
-      color: #002663;
-      text-decoration: underline;
-      transition: color 0.3s;
-    }
-    a:hover {
-      color: #00509e;
-    }
-    h1 {
-      margin: 2rem 0 0.5rem;
-      text-align: center;
-      color: #fff;
-      font-size: 2.5rem;
-      font-weight: 700;
-    }
-    h2 {
-      margin: 0;
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #fff;
-      text-align: center;
-    }
-    p {
-      margin-bottom: 1.5rem;
-      font-size: 1rem;
-      line-height: 1.6;
-      text-align: center;
-      max-width: 600px;
-      margin: 0 auto 1.5rem;
-      color: #333;
     }
     .header {
-      background: #002663;
-      padding: 2rem 1rem;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      background: var(--primary);
+      color: #fff;
+      text-align: center;
+      padding: var(--spacing) 1rem;
       position: relative;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
     .header-logo {
       position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 160px;
-      height: auto;
+      top: 50%; transform: translateY(-50%);
+      width: 140px;
     }
-    .header-logo.left {
-      left: 10%;
+    .header-logo.left { left: 1rem; }
+    .header-logo.right { right: 1rem; }
+    a {
+      text-decoration: underline;
+      font-size: 2.25rem;
+      color: var(--primary);
+      transition: color var(--transition);
     }
-    .header-logo.right {
-      right: 10%;
+    portfolio-screen:nth-of-type(odd) a { color: #fff; }
+    a:hover { color: #001f4d; }
+    portfolio-sidebar-theme {
+      display: block;
+      scroll-snap-type: y mandatory;
     }
     .sidebar {
-      background: rgba(255, 255, 255, 0.9);
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      display: flex;
-      justify-content: center;
-      padding: 0.75rem 0;
-      position: sticky;
-      top: 0;
+      background: rgba(255,255,255,0.9);
+      position: sticky; top: 0;
       z-index: 100;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
-    .sidebar ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-      margin: 0;
-      padding: 0;
-    }
-    .sidebar li a {
-      font-weight: 500;
-      position: relative;
-      padding: 0.25rem 0;
-    }
-    .sidebar li a::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: -4px;
-      width: 0;
-      height: 2px;
-      background: #002663;
-      transition: width 0.3s;
-    }
-    .sidebar li a:hover::after {
-      width: 100%;
-    }
-    .content {
-      max-width: 1000px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-    section {
-      background: rgba(255, 255, 255, 0.85);
-      border-radius: 8px;
-      padding: 2rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s;
-    }
-    section:hover {
-      transform: translateY(-4px);
-    }
-    #about, #projects {
-      background: #002663;
-      color: #fff;
-    }
-    #about h2, #about p, #projects h2, #projects p {
-      color: #fff;
-    }
-    #projects a {
-      color: #fff;
-    }
-    #projects a:hover {
-      color: #ddd;
-    }
-    .profile-picture {
-      display: block;
-      margin: 1rem auto;
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid #335293;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    }
-    .resume-image, .projects-image {
-      display: block;
-      margin: 1rem auto;
-      max-width: 100%;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    }
-    .scroll-top {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 50px;
-      height: 50px;
-      background: #002663;
-      color: #fff;
-      border-radius: 50%;
+    .sidebar ul { list-style: none; display: flex; justify-content: center; gap: 2rem; margin: 0; padding: var(--spacing) 0; }
+    .sidebar a { font-weight: 600; position: relative; padding-bottom: 0.25rem; }
+    .sidebar a::after { content: ''; position: absolute; left: 0; bottom: 0; width: 0; height: 2px; background: var(--primary); transition: width var(--transition); }
+    .sidebar a:hover::after { width: 100%; }
+    portfolio-screen {
+      min-height: 100vh;
+      padding: calc(var(--spacing)*2) 1rem;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: space-around;
       text-align: center;
-      line-height: 50px;
-      font-size: 1.5rem;
-      cursor: pointer;
-      opacity: 0.8;
-      transition: opacity 0.3s, transform 0.3s;
-      z-index: 100;
+      transition: background var(--transition), transform var(--transition);
+      scroll-snap-align: start;
     }
-    .scroll-top:hover {
-      opacity: 1;
-      transform: translateY(-2px);
-    }
+    portfolio-screen:nth-of-type(odd) { background: var(--primary); color: #fff; }
+    portfolio-screen:nth-of-type(even) { background: var(--accent); color: var(--primary); }
+    portfolio-screen:hover { transform: translateY(-4px); }
+    h1 { margin: var(--spacing) 0 0.5rem; font-size: 2.5rem; }
+    h2 { margin: 0; font-size: 2rem; }
+    h4 { margin: var(--spacing) 0; font-size: 1.2rem; }
+    portfolio-screen#home h1 { font-size: 3rem; margin-bottom: 0; }
+    portfolio-screen#home h4 { font-size: 3.375rem; margin-top: 0; }
+    p { width: 90%; margin: var(--spacing) auto; font-size: 1.125rem; line-height: 1.6; }
+    .profile-preview-wrapper { width: 150px; height: 150px; border-radius: 50%; overflow: hidden; margin: var(--spacing) 0; border: 3px solid var(--primary); box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+    .profile-preview-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--transition); }
+    .profile-preview-wrapper:hover img { transform: scale(1.2); }
+    portfolio-screen#about h2 { font-size: 3rem; margin-bottom: calc(var(--spacing)*1.5); }
+    portfolio-screen#about p { flex: 1; width: 90%; margin-bottom: calc(var(--spacing)*2); font-size: 3.375rem; line-height: 1.4; }
+    portfolio-screen#contact p, portfolio-screen#contact a { font-size: 2.25rem; }
+    portfolio-screen#projects p { font-size: 2rem; }
+    .resume-image, .projects-image { display: block; margin: var(--spacing) 0; max-width: 90%; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+    simple-cta { text-decoration: underline; font-size: 2.25rem; color: var(--primary); background: none; border: none; padding: 0; cursor: pointer; }
+    portfolio-screen:nth-of-type(odd) simple-cta { color: #fff; }
+    simple-cta:hover { color: #001f4d; }
+    scroll-button { position: fixed; bottom: 20px; right: 20px; }
+    .scroll-top { position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px; background: var(--primary); color: #fff; border-radius: 50%; text-align: center; line-height: 50px; font-size: 1.5rem; cursor: pointer; opacity: 0.8; transition: opacity var(--transition), transform var(--transition); z-index: 100; }
+    .scroll-top:hover { opacity: 1; transform: translateY(-2px); }
   </style>
+  <script type="module">
+    import 'https://unpkg.com/@haxtheweb/portfolio-sidebar-theme@latest/dist/portfolio-sidebar-theme.js?module';
+    import 'https://unpkg.com/@haxtheweb/simple-cta@latest/dist/simple-cta.js?module';
+    import 'https://unpkg.com/@haxtheweb/scroll-button@latest/dist/scroll-button.js?module';
+    class ProfilePicture extends HTMLElement {
+      constructor() { super(); const img = document.createElement('img'); img.src = this.getAttribute('src'); img.alt = this.getAttribute('alt') || ''; this.appendChild(img); }
+    }
+    customElements.define('profile-picture', ProfilePicture);
+  </script>
 </head>
 <body>
   <header class="header">
-    <img src="https://logosarchive.com/wp-content/uploads/2021/12/Penn-State-University-logo.svg" alt="Penn State Logo" class="header-logo left">
+    <img src="https://logosarchive.com/wp-content/uploads/2021/12/Penn-State-University-logo.svg" alt="Logo" class="header-logo left">
     <h1>Shane Godfrey's</h1>
     <h2>Professional Portfolio</h2>
-    <img src="https://logosarchive.com/wp-content/uploads/2021/12/Penn-State-University-logo.svg" alt="Penn State Logo" class="header-logo right">
+    <img src="https://logosarchive.com/wp-content/uploads/2021/12/Penn-State-University-logo.svg" alt="Logo" class="header-logo right">
   </header>
-  
-  <nav class="sidebar">
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#resume">Resume</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
 
-  <div class="content">
-    <section id="home">
-      <h2>Welcome to My Portfolio</h2>
-      <p>Hi, I'm Shane Godfrey, a second-year student at Penn State University studying Enterprise Integration Technology. Explore my work to learn more about my skills, projects, and experience.</p>
-    </section>
+  <portfolio-sidebar-theme>
+    <nav slot="sidebar" class="sidebar">
+      <ul>
+        <li><a href="#home" onclick="navigate(event)">Home</a></li>
+        <li><a href="#about" onclick="navigate(event)">About</a></li>
+        <li><a href="#resume" onclick="navigate(event)">Resume</a></li>
+        <li><a href="#projects" onclick="navigate(event)">Projects</a></li>
+        <li><a href="#contact" onclick="navigate(event)">Contact</a></li>
+      </ul>
+    </nav>
 
-    <section id="about">
+    <portfolio-screen id="home">
+      <h1>Welcome to My Portfolio</h1>
+      <h4>Explore my projects, skills, and experience.</h4>
+    </portfolio-screen>
+
+    <portfolio-screen id="about">
       <h2>About Me</h2>
-      <img src="https://media.licdn.com/dms/image/v2/D4E03AQF9tWJ_Rh-kcA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1689736148829?e=1750896000&v=beta&t=_v723NKVfduwUf-TP1c51ElcvwRpPNwi8HFZwcY660I" alt="Shane Godfrey headshot" class="profile-picture">
+      <profile-picture src="https://media.licdn.com/dms/image/v2/D4E03AQF9tWJ_Rh-kcA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1689736148829?e=1752105600&v=beta&t=GDheMcYO5YMhMQBLmyG93zmOc5uDJhWZQcFbtYJzPDU" alt="Shane Godfrey headshot" class="profile-preview-wrapper"></profile-picture>
       <p>I’m pursuing a degree in Enterprise Integration Technology at Penn State’s College of Information Sciences and Technology, where I focus on designing efficient, enterprise-grade solutions. As an active member of Penn State’s THON, I’m proud to support families affected by childhood cancer.</p>
-    </section>
+    </portfolio-screen>
 
-    <section id="resume">
+    <portfolio-screen id="resume">
       <h2>Resume</h2>
-      <img src="Screenshot%202025-05-01%20at%2012.39.42%E2%80%AFPM.png" alt="Resume Preview" class="resume-image">
-      <p><a href="https://docs.google.com/document/d/1pO9X8vA3o8eA74YhIy7p0nk9MgHM21XqI68-7kthnj0/edit?usp=sharing" target="_blank">View My Resume</a></p>
-      <p><a href="https://www.linkedin.com/in/shane-godfrey-04b52b284/" target="_blank">LinkedIn Profile</a></p>
-      <p><a href="https://github.com/TheRizzler-Maxer" target="_blank">GitHub Repositories</a></p>
-    </section>
+      <img src="Screenshot 2025-05-01 at 12.39.42 PM.png" alt="Resume Preview" class="resume-image">
+      <p><simple-cta href="https://docs.google.com/document/d/..." target="_blank">View My Resume</simple-cta></p>
+      <p><a href="https://www.linkedin.com/in/shane-godfrey-04b52b284/">LinkedIn Profile</a></p>
+      <p><a href="https://github.com/TheRizzler-Maxer">GitHub Repositories</a></p>
+    </portfolio-screen>
 
-    <section id="projects">
+    <portfolio-screen id="projects">
       <h2>Projects</h2>
-      <p>This is a project my team and I collaborated on to link custom GitHub avatars with users' GitHub accounts, and I’m incredibly proud of the final result we achieved.</p>
-      <img src="Screenshot%202025-05-03%20at%206.12.23%E2%80%AFPM.png" alt="Projects Preview" class="projects-image">
-      <p><a href="https://github.com/TheRizzler-Maxer/github-rpg-contributors" target="_blank">View My GitHub RPG Contributors Project</a></p>
-    </section>
+      <p>This is a project my team and I collaborated on to link custom GitHub avatars with users' GitHub accounts.</p>
+      <img src="Screenshot 2025-05-03 at 6.12.23 PM.png" alt="Projects Preview" class="projects-image">
+      <p><a href="https://github.com/TheRizzler-Maxer/github-rpg-contributors">View My GitHub RPG Contributors Project</a></p>
+    </portfolio-screen>
 
-    <section id="contact">
-      <h1>Contact</h1>
+    <portfolio-screen id="contact">
+      <h2>Contact Me</h2>
       <p>Email: <a href="mailto:scg5440@psu.edu">scg5440@psu.edu</a></p>
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdfqjgOESL7Nn16cqjFAToSv60UaQPMfuY3fY391JmMLvpBng/viewform?usp=header" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-    </section>
-  </div>
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdfqjgOESL7Nn16cqjFAToSv60UaQPMfuY3fY391JmMLvpBng/viewform?usp=header" width="100%" height="800" frameborder="0">Loading…</iframe>
+    </portfolio-screen>
 
-  <div class="scroll-top" id="scrollTopBtn">↑</div>
+    <scroll-button slot="scroll-button"></scroll-button>
+    <div class="scroll-top" id="scrollTopBtn">↑</div>
+  </portfolio-sidebar-theme>
 
   <script>
+    function navigate(event) {
+      event.preventDefault();
+      const target = event.currentTarget.getAttribute('href').substring(1);
+      history.pushState(null, '', `#${target}`);
+      document.getElementById(target).scrollIntoView({ behavior: 'smooth' });
+    }
+    window.addEventListener('load', () => {
+      if (location.hash) {
+        const el = document.getElementById(location.hash.substring(1));
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
     document.getElementById('scrollTopBtn').addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
