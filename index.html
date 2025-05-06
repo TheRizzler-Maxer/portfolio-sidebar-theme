@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --primary: #002663;
+      --primary: #042b6c;
       --accent: #ddd;
       --spacing: 1.5rem;
       --transition: 0.3s;
@@ -23,7 +23,6 @@
       color: #333;
       scroll-behavior: smooth;
     }
-
     .header {
       background: var(--primary);
       color: #fff;
@@ -40,20 +39,19 @@
     }
     .header-logo.left { left: 1rem; }
     .header-logo.right { right: 1rem; }
-
     a {
       text-decoration: underline;
       font-size: 2.25rem;
       color: var(--primary);
       transition: color var(--transition);
     }
-    a:hover { color: #001f4d; }
-
+    a:hover {
+      color: #001f4d;
+    }
     portfolio-sidebar-theme {
       display: block;
       scroll-snap-type: y mandatory;
     }
-
     .sidebar {
       background: rgba(255,255,255,0.9);
       position: sticky;
@@ -77,19 +75,19 @@
     .sidebar a::after {
       content: '';
       position: absolute;
-      left: 0; bottom: 0;
-      width: 0; height: 2px;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
       background: var(--primary);
       transition: width var(--transition);
     }
     .sidebar a:hover::after {
       width: 100%;
     }
-
-    /* generic portfolio-screen reset */
     portfolio-screen {
       min-height: 100vh;
-      padding: calc(var(--spacing)*2) 1rem;
+      padding: calc(var(--spacing) * 2) 1rem;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -102,76 +100,56 @@
     portfolio-screen:hover {
       transform: translateY(-4px);
     }
-
-    /* ——— REMOVE these generic backgrounds ———
-    portfolio-screen:nth-of-type(odd) {
-      background: var(--primary);
-      color: #fff;
-    }
-    portfolio-screen:nth-of-type(even) {
-      background: var(--accent);
+    portfolio-screen#home {
+      background-color: #f5f7fa;
       color: var(--primary);
     }
-    */
-
-    /* ——— per-page background colors ——— */
-   /* ——— professional per-page backgrounds ——— */
-portfolio-screen#home {
-  background-color: #f5f7fa;   /* very light slate */
-  color: var(--primary);
-}
-portfolio-screen#about {
-  background-color: #ffffff;   /* clean white */
-  color: var(--primary);
-}
-portfolio-screen#resume {
-  background-color: #e8f5e9;   /* soft mint */
-  color: var(--primary);
-}
-portfolio-screen#projects {
-  background-color: #e3f2fd;   /* pale sky blue */
-  color: var(--primary);
-}
-portfolio-screen#contact {
-  background-color: #fff3e0;   /* gentle cream */
-  color: var(--primary);
-}
-/* collapse gap between the two lines on home */
-portfolio-screen#home h1,
-portfolio-screen#home h4 {
-  margin: 0;
-}
-portfolio-screen#about p {
-    font-size: 3rem;
-  }
-
-  /* double the <p> size in Projects */
-  portfolio-screen#projects p {
-    font-size: 2rem;
-  }
-  portfolio-screen#contact p {
-    font-size: 2rem;
-  }
-
+    portfolio-screen#about {
+      background-color: #ffffff;
+      color: var(--primary);
+    }
+    portfolio-screen#resume {
+      background-color: #e8f5e9;
+      color: var(--primary);
+    }
+    portfolio-screen#projects {
+      background-color: #e3f2fd;
+      color: var(--primary);
+    }
+    portfolio-screen#contact {
+      background-color: #fff3e0;
+      color: var(--primary);
+    }
+    portfolio-screen#home h1,
+    portfolio-screen#home h4 {
+      margin: 0;
+    }
+    portfolio-screen#home h4 {
+      font-size: 2.5rem;
+    }
+    portfolio-screen#home p {
+      font-size: 4rem;
+    }
+    portfolio-screen#about p {
+      font-size: 3rem;
+    }
+    portfolio-screen#projects p {
+      font-size: 2rem;
+    }
+    portfolio-screen#contact p {
+      font-size: 2rem;
+    }
     h1 {
       margin: var(--spacing) 0 0.5rem;
       font-size: 2.5rem;
     }
     h2 {
       margin: 0;
-      font-size: 2rem;
+      font-size: 4rem;
     }
     h4 {
       margin: var(--spacing) 0;
       font-size: 1.2rem;
-    }
-    portfolio-screen#home h1 {
-      font-size: 3rem;
-      margin-bottom: 0;
-    }
-    portfolio-screen#home h4 {
-      font-size: 3.375rem;
-      margin-top: 0;
     }
     p {
       width: 90%;
@@ -179,7 +157,6 @@ portfolio-screen#about p {
       font-size: 1.125rem;
       line-height: 1.6;
     }
-
     .profile-preview-wrapper {
       width: 150px;
       height: 150px;
@@ -198,7 +175,6 @@ portfolio-screen#about p {
     .profile-preview-wrapper:hover img {
       transform: scale(1.2);
     }
-
     simple-cta {
       text-decoration: underline;
       font-size: 2.25rem;
@@ -211,15 +187,11 @@ portfolio-screen#about p {
     simple-cta:hover {
       color: #001f4d;
     }
-
-    .resume-image, .projects-image {
-      display: block;
-      margin: var(--spacing) 0;
-      max-width: 90%;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    scroll-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
     }
-
     .scroll-top {
       position: fixed;
       bottom: 20px;
@@ -279,21 +251,18 @@ portfolio-screen#about p {
 
     <portfolio-screen id="home">
       <h1>Welcome to My Portfolio</h1>
-      <h4> Discover my background, delve into my projects, and review my resume. </h4>
+      <h4>Discover my background, delve into my projects, and review my resume.</h4>
     </portfolio-screen>
 
     <portfolio-screen id="about">
       <h2>About Me</h2>
       <div class="profile-preview-wrapper">
-        <img
-          src="https://media.licdn.com/dms/image/v2/D4E03AQF9tWJ_Rh-kcA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1689736148829?e=1752105600&v=beta&t=GDheMcYO5YMhMQBLmyG93zmOc5uDJhWZQcFbtYJzPDU"
-          alt="Shane Godfrey headshot"
-        />
+        <img src="https://media.licdn.com/dms/image/v2/D4E03AQF9tWJ_Rh-kcA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1689736148829?e=1752105600&v=beta&t=GDheMcYO5YMhMQBLmyG93zmOc5uDJhWZQcFbtYJzPDU" alt="Shane Godfrey headshot">
       </div>
       <p>
         I’m pursuing a degree in Enterprise Integration Technology at Penn State’s College of Information Sciences and Technology, where I focus on designing efficient, enterprise-grade solutions. As an active member of Penn State’s THON, I’m proud to support families affected by childhood cancer.
       </p>
-    </portfolio-screen>    
+    </portfolio-screen>
 
     <portfolio-screen id="resume">
       <h2>Resume</h2>
@@ -302,7 +271,7 @@ portfolio-screen#about p {
       <p><a href="https://www.linkedin.com/in/shane-godfrey-04b52b284/">LinkedIn Profile</a></p>
       <p><a href="https://github.com/TheRizzler-Maxer">GitHub Repositories</a></p>
     </portfolio-screen>
-    
+
     <portfolio-screen id="projects">
       <h2>Projects</h2>
       <p>This is a project my team and I collaborated on to link custom GitHub avatars with users' GitHub accounts.</p>
@@ -328,14 +297,12 @@ portfolio-screen#about p {
       document.getElementById(target).scrollIntoView({ behavior: 'smooth' });
     }
     window.addEventListener('load', () => {
-      if (location.hash) {
-        const el = document.getElementById(location.hash.substring(1));
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-      }
+      window.scrollTo({ top: 0, behavior: 'auto' });
     });
     document.getElementById('scrollTopBtn').addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   </script>
-</body>
+  </body>
+  
 </html>
