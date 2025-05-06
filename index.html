@@ -115,11 +115,43 @@
     */
 
     /* ——— per-page background colors ——— */
-    portfolio-screen#home    { background-color: #985ecb; color: #333; }
-    portfolio-screen#about   { background-color: #c06c84; color: #fff; }
-    portfolio-screen#resume  { background-color: #29c999; color: #fff; }
-    portfolio-screen#projects{ background-color: #355c7d; color: #fff; }
-    portfolio-screen#contact { background-color: #ed23d9; color: #fff; }
+   /* ——— professional per-page backgrounds ——— */
+portfolio-screen#home {
+  background-color: #f5f7fa;   /* very light slate */
+  color: var(--primary);
+}
+portfolio-screen#about {
+  background-color: #ffffff;   /* clean white */
+  color: var(--primary);
+}
+portfolio-screen#resume {
+  background-color: #e8f5e9;   /* soft mint */
+  color: var(--primary);
+}
+portfolio-screen#projects {
+  background-color: #e3f2fd;   /* pale sky blue */
+  color: var(--primary);
+}
+portfolio-screen#contact {
+  background-color: #fff3e0;   /* gentle cream */
+  color: var(--primary);
+}
+/* collapse gap between the two lines on home */
+portfolio-screen#home h1,
+portfolio-screen#home h4 {
+  margin: 0;
+}
+portfolio-screen#about p {
+    font-size: 3rem;
+  }
+
+  /* double the <p> size in Projects */
+  portfolio-screen#projects p {
+    font-size: 2rem;
+  }
+  portfolio-screen#contact p {
+    font-size: 2rem;
+  }
 
     h1 {
       margin: var(--spacing) 0 0.5rem;
@@ -247,7 +279,7 @@
 
     <portfolio-screen id="home">
       <h1>Welcome to My Portfolio</h1>
-      <h4>Explore my projects, skills, and experience.</h4>
+      <h4> Discover my background, delve into my projects, and review my resume. </h4>
     </portfolio-screen>
 
     <portfolio-screen id="about">
